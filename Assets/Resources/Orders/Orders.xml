@@ -1,0 +1,41 @@
+<root>
+  <order name="Limonade">
+    <food>Limonade</food>
+  </order>
+  <order name="Waffle">
+    <food>Waffle</food>
+  </order>
+  <order name="ChokolateWaffle">
+    <food>Waffle</food>
+    <food dopings="Waffle">Chocolate</food>
+  </order>
+  <order name="BerriesWaffle">
+    <food>Waffle</food>
+    <food dopings="Waffle">Berries</food>
+  </order>
+  <order name="SticksWaffle">
+    <food>Waffle</food>
+    <food dopings="Waffle">Sticks</food>
+  </order>
+  <order name="ChokolateBerriesWaffle">
+    <food>Waffle</food>
+    <food dopings="Waffle">Chocolate</food>
+    <food dopings="Waffle">Berries</food>
+  </order>
+  <order name="ChokolateSticksWaffle">
+    <food>Waffle</food>
+    <food dopings="Waffle">Chocolate</food>
+    <food dopings="Waffle">Sticks</food>
+  </order>
+  <order name="BerriesSticksWaffle">
+    <food>Waffle</food>
+    <food dopings="Waffle">Berries</food>
+    <food dopings="Waffle">Sticks</food>
+  </order>
+  <order name="ChokolateBerriesSticksWaffle">
+    <food>Waffle</food>
+    <food dopings="Waffle">Chocolate</food>
+    <food dopings="Waffle">Berries</food>
+    <food dopings="Waffle">Sticks</food>
+  </order>
+</root>
