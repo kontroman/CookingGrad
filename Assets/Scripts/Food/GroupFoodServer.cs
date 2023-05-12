@@ -8,11 +8,13 @@ public class GroupFoodServer : MonoBehaviour
 	public List<FoodServer> Servers = null;
 
 	[UsedImplicitly]
-	public void TryServe()
+	public async void TryServe()
 	{
 		foreach (var server in Servers)
 		{
-			if (server.TryServeFood())
+			var result = await server.TryServeFood();
+
+			if (result)
 			{
 				return;
 			}

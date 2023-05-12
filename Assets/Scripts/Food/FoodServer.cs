@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class FoodServer : MonoBehaviour
@@ -11,14 +12,16 @@ public class FoodServer : MonoBehaviour
 		_place = GetComponent<PlaceForFood>();
 	}
 
-	public bool TryServeFood()
+	public async Task<bool> TryServeFood()
 	{
 		if (_place.IsFree || (_place.CurrentFood.CurrentStatus != Food.FoodStatus.Cooked))
 		{
 			return false;
 		}
 		var order = OrdersController.Instance.FindOrder(new List<string>(1) { _place.CurrentFood.FoodName });
-		if ((order == null) || !CustomersController.Instance.ServeOrder(order))
+		bool task = await CustomersController.Instance.ServeOrder(order);
+
+		if ((order == null) || !task)
 		{
 			return false;
 		}

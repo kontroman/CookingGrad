@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class CustomerPlace : MonoBehaviour
@@ -8,11 +9,16 @@ public class CustomerPlace : MonoBehaviour
 
 	public bool IsFree { get { return CurrentCustomer == null; } }
 
-	public void PlaceCustomer(Customer customer)
+	public async void PlaceCustomer(Customer customer)
 	{
 		CurrentCustomer = customer;
 		customer.transform.SetParent(transform);
-		customer.transform.localPosition = Vector3.zero;
+		customer.AnimationController.DoMoveToPlace(this.transform);
+
+		await Task.Delay(5000);
+
+		customer.ActivateCustomer();
+		//customer.transform.localPosition = Vector3.zero;
 	}
 
 	public void Free()

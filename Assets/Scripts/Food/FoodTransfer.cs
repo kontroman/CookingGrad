@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public sealed class FoodTransfer : MonoBehaviour
+public sealed class FoodTransfer : MonoBehaviour, IPointerClickHandler
 {
     public bool transferOnlyCookedFood = true;
 
     public List<MonoFoodPlace> places = new List<MonoFoodPlace>();
 
     PlaceForFood _place = null;
+
+    private float _lastClickTime;
+    private float _clickInterval = 0.5f;
 
     private void Start()
     {
@@ -21,16 +25,27 @@ public sealed class FoodTransfer : MonoBehaviour
 
         if (food == null) return;
 
-        if (transferOnlyCookedFood && (food.CurrentStatus != Food.FoodStatus.Cooked)){
+        if (transferOnlyCookedFood && (food.CurrentStatus == Food.FoodStatus.Cooked)){
             _place.PlaceFood(food);
+
+            foreach (var place in places)
+            {
+                if (!place.PlaceFood(food))
+                    continue;
+                _place.FreePlace();
+                return;
+            }
+        }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if ((_lastClickTime + _clickInterval) > Time.time)
+        {
+            if(_place.CurrentFood.CurrentStatus == Food.FoodStatus.Overcooked)
+                _place.FreePlace();
         }
 
-        foreach(var place in places)
-        {
-            if (!place.PlaceFood(food))
-                continue;
-            _place.FreePlace();
-            return;
-        }
+        _lastClickTime = Time.time;
     }
 }

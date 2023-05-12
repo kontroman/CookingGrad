@@ -13,10 +13,13 @@ public class OrderServer : MonoBehaviour
 	}
 
 	[UsedImplicitly]
-	public void TryServeOrder()
+	public async void TryServeOrder()
 	{
 		var order = OrdersController.Instance.FindOrder(_orderPlace.CurrentOrder);
-		if ((order == null) || !CustomersController.Instance.ServeOrder(order))
+
+		bool task = await CustomersController.Instance.ServeOrder(order);
+
+		if ((order == null) || !task)
 		{
 			return;
 		}

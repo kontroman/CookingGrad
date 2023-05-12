@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class CustomersController : MonoBehaviour
@@ -12,6 +13,7 @@ public class CustomersController : MonoBehaviour
     public float CustomerWaitTime = 25f;
     public float CustomerSpawnTime = 3f;
     public List<CustomerPlace> CustomerPlaces = null;
+    public List<Transform> CustomerSpawnPlaces = null;
 
     public int TotalCustomersGenerated { get; private set; } = 0;
     public event Action TotalCustomersGeneratedChanged;
@@ -73,10 +75,10 @@ public class CustomersController : MonoBehaviour
 
     private Order GenerateRandomOrder()
     {
-        var oc = OrdersController.Instance;
-        return oc.Orders[UnityEngine.Random.Range(0, oc.Orders.Count)];
+        return OrdersController.Instance.Orders[UnityEngine.Random.Range(0, OrdersController.Instance.Orders.Count)];
     }
-    void SpawnCustomer()
+
+    private void SpawnCustomer()
     {
         var freePlaces = CustomerPlaces.FindAll(x => x.IsFree);
         if (freePlaces.Count <= 0)
@@ -85,7 +87,11 @@ public class CustomersController : MonoBehaviour
         }
 
         var place = freePlaces[UnityEngine.Random.Range(0, freePlaces.Count)];
-        place.PlaceCustomer(GenerateCustomer());
+
+        Customer newCustomer = GenerateCustomer();
+
+        place.PlaceCustomer(newCustomer);
+
         TotalCustomersGenerated++;
         TotalCustomersGeneratedChanged?.Invoke();
     }
@@ -94,9 +100,10 @@ public class CustomersController : MonoBehaviour
     {
         var customerGo = Instantiate(Resources.Load<GameObject>(CUSTOMER_PREFABS_PATH));
         var customer = customerGo.GetComponent<Customer>();
-
+        var spawnPlace = CustomerSpawnPlaces[UnityEngine.Random.Range(0, CustomerSpawnPlaces.Count)];
         var orders = _orderSets.Pop();
-        customer.Init(orders);
+
+        customer.Init(orders, spawnPlace);
 
         return customer;
     }
@@ -123,11 +130,13 @@ public class CustomersController : MonoBehaviour
         return activeCustomersOrders;
     }
 
-    public bool ServeOrder(Order order)
+    public async Task<bool> ServeOrder(Order order)
     {
         foreach (Customer _customer in FindAndSortOredersByTime())
         {
-            if (_customer.TryServeOrder(order))
+            bool task = await _customer.TryServeOrderAsync(order);
+
+            if (task)
             {
                 if (_customer.IsComplete) FreeCustomer(_customer);
                 return true;
