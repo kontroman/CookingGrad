@@ -26,6 +26,9 @@ public sealed class OrderPlace : MonoFoodPlace
             return false;
         }
 
+        if (!CurrentOrder.Contains("Waffle") && food.FoodName != "Waffle")
+            return false;
+
         foreach(var order in AvailableOrders)
         {
             foreach(var orderFood in order.Foods.Where(x => x.Name == food.FoodName))
@@ -55,7 +58,6 @@ public sealed class OrderPlace : MonoFoodPlace
     {
         if (!CanAddFood(food))
         {
-            Debug.Log("CantPlaceFood");
             return false;
         }
 
