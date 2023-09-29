@@ -1,41 +1,25 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Xml;
 using UnityEngine;
 
-public sealed class OrdersController : MonoBehaviour
+public sealed class OrdersController : BaseController
 {
-	static OrdersController _instance = null;
-	public static OrdersController Instance
-	{
-		get
-		{
-			if (!_instance)
-			{
-				_instance = FindObjectOfType<OrdersController>();
-			}
-			if (_instance && !_instance._isInit)
-			{
-				_instance.Init();
-			}
-			return _instance;
-		}
-		set { _instance = value; }
-	}
+	public static OrdersController Instance { get; private set; }
 
 	public List<Order> Orders = new List<Order>();
+	public List<OrderPlace> Places = new List<OrderPlace>();
 
-	bool _isInit = false;
+	bool isInit = false;
 
 	void Awake()
 	{
-		if ((_instance != null) && (_instance != this))
-		{
-			Debug.LogError("Another instance of OrdersController already exists!");
-		}
-		Instance = this;
+		if (Instance != null) return;
+		else Instance = this;
 	}
 
 	void OnDestroy()
@@ -46,32 +30,36 @@ public sealed class OrdersController : MonoBehaviour
 		}
 	}
 
-	void Start()
+	public override Task InitComponent(LevelData levelData)
 	{
-		Init();
-	}
+		if (isInit)
+			return Task.CompletedTask;
 
-	void Init()
-	{
-		if (_isInit)
-		{
-			return;
-		}
-		var ordersConfig = Resources.Load<TextAsset>("Orders/Orders");
-		var ordersXml = new XmlDocument();
-		using (var reader = new StringReader(ordersConfig.ToString()))
-		{
-			ordersXml.Load(reader);
-		}
+		var ordersConfig = levelData.AvailableOrders;
+        var ordersXml = new XmlDocument();
 
-		var rootElem = ordersXml.DocumentElement;
-		foreach (XmlNode node in rootElem.SelectNodes("order"))
-		{
-			var order = ParseOrder(node);
-			Orders.Add(order);
-		}
-		_isInit = true;
-	}
+        using (var reader = new StringReader(ordersConfig.ToString()))
+        {
+            ordersXml.Load(reader);
+        }
+
+        var rootElem = ordersXml.DocumentElement;
+
+        foreach (XmlNode node in rootElem.SelectNodes("order"))
+        {
+            var order = ParseOrder(node);
+            Orders.Add(order);
+        }
+
+        isInit = true;
+
+        foreach (var item in Places)
+        {
+			item.Init();
+        }
+
+        return Task.CompletedTask;
+    }
 
 	Order ParseOrder(XmlNode node)
 	{

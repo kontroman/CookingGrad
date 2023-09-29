@@ -25,13 +25,15 @@ public sealed class FoodTransfer : MonoBehaviour, IPointerClickHandler
 
         if (food == null) return;
 
-        if (transferOnlyCookedFood && (food.CurrentStatus == Food.FoodStatus.Cooked)){
+        if (transferOnlyCookedFood && (food.CurrentStatus == Food.FoodStatus.Cooked))
+        {
             _place.PlaceFood(food);
 
             foreach (var place in places)
             {
                 if (!place.PlaceFood(food))
                     continue;
+
                 _place.FreePlace();
                 return;
             }

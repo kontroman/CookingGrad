@@ -731,11 +731,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentSprite: {fileID: 6363263088754485305}
   AvailableSprites:
-  - {fileID: 21300000, guid: e730adf0c7a262e43bdf692f72d258d7, type: 3}
-  - {fileID: 21300000, guid: b1d6b754e86ec9d48a967d0a55bac39f, type: 3}
-  - {fileID: 21300000, guid: 9ac44debb2d57c341aaf3ca888f2691f, type: 3}
-  - {fileID: 21300000, guid: b76437be1518d1a44abba8251be65512, type: 3}
-  - {fileID: 21300000, guid: b76437be1518d1a44abba8251be65512, type: 3}
+  - {fileID: 21300000, guid: f78f5d91560cfae478ec5c59c9f100e6, type: 3}
+  - {fileID: 21300000, guid: 1c7d907fdafd860408ce6d1dd271717a, type: 3}
+  - {fileID: 21300000, guid: 185a16da20d2649459d41fed680fd954, type: 3}
+  - {fileID: 21300000, guid: 40250693e25eda64eb658669d551f750, type: 3}
+  - {fileID: 21300000, guid: 9b606ca589793b847b042c9344dfb1d2, type: 3}
+  - {fileID: 21300000, guid: d0e29d1ac350fb642b72747ae9ffc403, type: 3}
+  - {fileID: 21300000, guid: 2b97d3cd8336d4840b62960f2720ef1f, type: 3}
+  - {fileID: 21300000, guid: a5ccfd6472f5fc841b06a5dd72a81c11, type: 3}
+  - {fileID: 21300000, guid: e4e503043edfe7b4ebab18f057b7f7e6, type: 3}
+  - {fileID: 21300000, guid: cab4b8b7f7b7add4e8c7485cb12db6dd, type: 3}
   TimerBar: {fileID: 6363263088534020048}
   OrderPlaces:
   - {fileID: 6363263088193105259}

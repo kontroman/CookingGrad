@@ -13,7 +13,7 @@ public sealed class OrderPlace : MonoFoodPlace
 
     List<Order> AvailableOrders = new List<Order>();
 
-    private void Start()
+    public void Init()
     {
         AvailableOrders.AddRange(OrdersController.Instance.Orders);
     }
@@ -25,6 +25,7 @@ public sealed class OrderPlace : MonoFoodPlace
             Debug.Log("Current food already contains here");
             return false;
         }
+
 
         if (!CurrentOrder.Contains("Waffle") && food.FoodName != "Waffle")
             return false;

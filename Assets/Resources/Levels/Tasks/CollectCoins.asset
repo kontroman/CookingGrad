@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 756c32dc981904945aa93b9a0aaa4243, type: 3}
+  m_Name: CollectCoins
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  MainTask: 2
+  Type: 0
+  Icon: {fileID: 21300000, guid: 42193e997c5e6b04388f9ffabc6a4ec2, type: 3}
+  Discription: "\u0417\u0430\u0440\u0430\u0431\u043E\u0442\u0430\u0439 \u043C\u043E\u043D\u0435\u0442\u043A\u0438:"
+  HasCounter: 1
+  Count: 80

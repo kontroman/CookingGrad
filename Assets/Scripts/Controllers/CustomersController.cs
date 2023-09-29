@@ -5,18 +5,49 @@ using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class CustomersController : MonoBehaviour
+public class CustomersController : BaseController
 {
     public static CustomersController Instance { get; private set; }
 
     public int CustomersTargetNumber = 15;
+
+    private int _totalServedCustomers;
+
+    public int TotalServerCustomers
+    {
+        get { return _totalServedCustomers; }
+        set
+        {
+            _totalServedCustomers = value;
+
+            TotalServedCustomersChanged.Invoke();
+        }
+    }
+
+    private int _totalEarnedMoney;
+
+    public int TotalEarnedMoney
+    {
+        get { return _totalEarnedMoney; }
+        set
+        {
+            _totalEarnedMoney = value;
+
+            TotalMoneyChanged.Invoke();
+        }
+    }
+
     public float CustomerWaitTime = 25f;
     public float CustomerSpawnTime = 3f;
     public List<CustomerPlace> CustomerPlaces = null;
     public List<Transform> CustomerSpawnPlaces = null;
 
     public int TotalCustomersGenerated { get; private set; } = 0;
+
     public event Action TotalCustomersGeneratedChanged;
+    public event Action TotalServedCustomersChanged;
+    public event Action TotalMoneyChanged;
+
     const string CUSTOMER_PREFABS_PATH = "Prefabs/Customer";
 
     public float _timer = 0f;
@@ -30,8 +61,6 @@ public class CustomersController : MonoBehaviour
     {
         if (Instance != null) return;
         else Instance = this;
-
-        Init();
     }
 
     private void Update()
@@ -48,8 +77,11 @@ public class CustomersController : MonoBehaviour
         _timer = 0f;
     }
 
-    public void Init()
+    public override Task InitComponent(LevelData levelData)
     {
+        CustomersTargetNumber = levelData.CustomersCount;
+        CustomerSpawnTime = levelData.SpawnTime;
+
         var totalOrders = 0;
         _orderSets = new Stack<List<Order>>();
         for (var i = 0; i < CustomersTargetNumber; i++)
@@ -68,6 +100,8 @@ public class CustomersController : MonoBehaviour
 
         TotalCustomersGenerated = 0;
         TotalCustomersGeneratedChanged?.Invoke();
+
+        return Task.CompletedTask;
 
         //GameplayController.Instance.OrdersTarget = totalOrders - 2;
         //GameplayController.Instance.StartGame();
@@ -108,11 +142,15 @@ public class CustomersController : MonoBehaviour
         return customer;
     }
 
-
-
     public void FreeCustomer(Customer customer)
     {
+        if (customer.IsComplete)
+        {
+            TotalServerCustomers++;
+        }
+
         var place = CustomerPlaces.Find(x => x.CurrentCustomer == customer);
+
         if (place == null)
         {
             return;
@@ -139,6 +177,11 @@ public class CustomersController : MonoBehaviour
             if (task)
             {
                 if (_customer.IsComplete) FreeCustomer(_customer);
+
+                int price = Resources.Load<Price>("Prices/" + order.name).FoodPrice;
+
+                TotalEarnedMoney += price;
+
                 return true;
             }
         }
