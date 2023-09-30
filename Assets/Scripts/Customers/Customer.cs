@@ -91,4 +91,9 @@ public class Customer : MonoBehaviour
         _timer = Mathf.Max(0f, _timer - 6f);
         return true;
     }
+
+    public void ResetTimer()
+    {
+        _timer = 0;
+    }
 }   
