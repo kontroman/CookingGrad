@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebef0afc71d787343aadea97ef5b3350, type: 3}
+  m_Name: Level2
+  m_EditorClassIdentifier: 
+  LevelIndex: 1
+  CustomersCount: 10
+  TimeBeforeFirstCustomer: 5
+  SpawnTime: 7
+  AvailableOrders: {fileID: 4900000, guid: f8d49b41b8cfdc443b5442f1d7eac90d, type: 3}
+  HasTime: 1
+  GameTime: 40
+  Tasks:
+  - {fileID: 11400000, guid: d1adc2a7a2a2fe548adc1dc18e5656b7, type: 2}

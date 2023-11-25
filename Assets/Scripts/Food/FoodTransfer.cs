@@ -44,8 +44,11 @@ public sealed class FoodTransfer : MonoBehaviour, IPointerClickHandler
     {
         if ((_lastClickTime + _clickInterval) > Time.time)
         {
-            if(_place.CurrentFood.CurrentStatus == Food.FoodStatus.Overcooked)
+            if (_place.CurrentFood.CurrentStatus == Food.FoodStatus.Overcooked)
+            {
+                GameIniter.Instance.InvokeAction(true);
                 _place.FreePlace();
+            }
         }
 
         _lastClickTime = Time.time;

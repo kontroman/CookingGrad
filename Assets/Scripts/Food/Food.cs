@@ -32,6 +32,7 @@ public sealed class Food
             case FoodStatus.Cooked:
                 {
                     CurrentStatus = FoodStatus.Overcooked;
+                    GameIniter.Instance.InvokeAction(false);
                     return;
                 }
             default:

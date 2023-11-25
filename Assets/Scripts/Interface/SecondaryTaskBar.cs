@@ -13,6 +13,31 @@ namespace Devotion.Scripts.Interface
         public void Init(LevelTask levelTask)
         {
             _icon.sprite = levelTask.Icon;
+
+            ObserveTask(levelTask);
+        }
+
+        private void ObserveTask(LevelTask levelTask)
+        {
+            switch (levelTask.MainTask)
+            {
+                case Quest.NoOvercooked:
+                    GameIniter.Instance.foodOvercoked += UpdateInfo;
+                    break;
+
+                case Quest.NoTrash:
+                    GameIniter.Instance.foodTrashed += UpdateInfo;
+                    break;
+
+                case Quest.NoUnhappy:
+
+                    break;
+            }
+        }
+
+        private void UpdateInfo()
+        {
+            GameIniter.Instance.SetGameOver();
         }
     }
 }

@@ -26,4 +26,5 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: c6d528602de2f374d9d052e03f614f08, type: 3}
   Discription: "\u041E\u0431\u0441\u043B\u0443\u0436\u0438 \u043F\u043E\u0441\u0435\u0442\u0438\u0442\u0435\u043B\u0435\u0439:"
   HasCounter: 1
-  Count: 10
+  Count: 5
+  IsCompleted: 0

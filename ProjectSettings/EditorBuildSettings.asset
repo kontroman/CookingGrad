@@ -11,4 +11,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/KitchenOne.unity
     guid: 160f844cf72d5fe4195f73ef2961861e
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: e4070cfe1b097b741bb168cfe2eacb10, type: 2}

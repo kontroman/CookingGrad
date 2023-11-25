@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class DisplayTask : MonoBehaviour
 {
     [SerializeField] private Image _icon;
-    [SerializeField] private GameObject _checkbox;
     [SerializeField] private TextMeshProUGUI _title;
 
     public void Init(LevelTask task)
@@ -17,9 +16,5 @@ public class DisplayTask : MonoBehaviour
 
         _icon.sprite = task.Icon;
         _title.text = task.Discription + postfix;
-
-        if (_checkbox)
-            _checkbox.SetActive(task.IsCompleted);
     }
-
 }

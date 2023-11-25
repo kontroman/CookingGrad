@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 7888521253420161159}
   - component: {fileID: 7888521253420161157}
   - component: {fileID: 7888521253420161158}
-  - component: {fileID: 9160255260956071228}
+  - component: {fileID: 2312167864698698707}
   m_Layer: 5
   m_Name: TaskEndWindow
   m_TagString: Untagged
@@ -309,7 +309,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &9160255260956071228
+--- !u!114 &2312167864698698707
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -318,10 +318,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7888521253420161152}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0eab19940a3e254aa1d62cb1371314f, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e5f9010284050847a1a2d4fd948a472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _icon: {fileID: 7888521253297130922}
+  _checkbox: {fileID: 440094922452217453}
   _title: {fileID: 7888521253706621208}
 --- !u!1 &7888521253706621210
 GameObject:
