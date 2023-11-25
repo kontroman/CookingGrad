@@ -1,3 +1,6 @@
+using Devotion.Scripts.Game.Boosters;
+using System.Diagnostics;
+
 public sealed class Food
 {
     public enum FoodStatus
@@ -10,12 +13,22 @@ public sealed class Food
     public string FoodName { get; }
     public FoodStatus CurrentStatus { get; private set; }
 
+    private bool _noOvercooked;
+
     public Food(string name, FoodStatus status = FoodStatus.Raw)
     {
         UnityEngine.Debug.Log("Created new food: " + name);
 
         FoodName = name;
         CurrentStatus = status;
+
+        if (BoostersManager.Instance.GetBooster(Booster.BoosterType.NoOvercooked))
+            OnNoOvercooked();
+    }
+
+    public void OnNoOvercooked()
+    {
+        _noOvercooked = true;
     }
 
     public void NextStep()
@@ -25,20 +38,17 @@ public sealed class Food
         switch (CurrentStatus)
         {
             case FoodStatus.Raw:
-                {
-                    CurrentStatus = FoodStatus.Cooked;
-                    return;
-                }
+                CurrentStatus = FoodStatus.Cooked;
+                break;
             case FoodStatus.Cooked:
-                {
-                    CurrentStatus = FoodStatus.Overcooked;
-                    GameIniter.Instance.InvokeAction(false);
-                    return;
-                }
+                if (_noOvercooked)
+                    break;
+
+                CurrentStatus = FoodStatus.Overcooked;
+                GameIniter.Instance.InvokeAction(false);
+                break;
             default:
-                {
-                    return;
-                }
+                break;
         }
     }
 }

@@ -23,3 +23,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d1adc2a7a2a2fe548adc1dc18e5656b7, type: 2}
   - {fileID: 11400000, guid: 2fafff5068ab13a48bf59b38130a824a, type: 2}
   - {fileID: 11400000, guid: c26f46e6958acb944b6ce17e9b304c89, type: 2}
+  Boosters:
+  - IsActive: 0
+    Type: 0

@@ -1,3 +1,4 @@
+using Devotion.Scripts.Game.Boosters;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -30,6 +31,8 @@ public class GameIniter : MonoBehaviour
         {
             await component.InitComponent(LevelData);
         });
+
+        BoostersManager boostersManager = new BoostersManager(LevelData);
     }
 
     public void InvokeAction(bool trashed)

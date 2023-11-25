@@ -1,3 +1,4 @@
+using Devotion.Scripts.Game.Boosters;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using System.Collections;
@@ -22,4 +23,6 @@ public class LevelData : ScriptableObject
 
     [TableList, GUIColor(1f, 0.8f, 0.8f)]
     public List<LevelTask> Tasks;
+
+    public List<Booster> Boosters;
 }
