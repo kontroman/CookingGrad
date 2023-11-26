@@ -1,3 +1,4 @@
+using Devotion.Scripts.Game.Boosters;
 using System;
 using UnityEngine;
 
@@ -31,6 +32,12 @@ public class PlaceForFood : MonoFoodPlace
             }
             return _timer / OvercookTime;
         }
+    }
+
+    private void Start()
+    {
+        if (BoostersManager.Instance.GetBooster(Booster.BoosterType.FastCooking))
+            CookTime = 0.3f;
     }
 
     //Обработка таймера для готовки еды на устройстве

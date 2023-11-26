@@ -1,6 +1,8 @@
+using Devotion.Scripts.Game.Boosters;
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 
 public class OrderServer : MonoBehaviour
@@ -10,7 +12,10 @@ public class OrderServer : MonoBehaviour
 	void Start()
 	{
 		_orderPlace = GetComponent<OrderPlace>();
-	}
+
+		if (BoostersManager.Instance.GetBooster(Booster.BoosterType.AutoServer))
+			_orderPlace.CurrentOrderUpdated += TryServeOrder;
+    }
 
 	[UsedImplicitly]
 	public async void TryServeOrder()

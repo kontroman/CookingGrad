@@ -903,7 +903,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Cook: 1
   CookTime: 5
-  OvercookTime: 7
+  OvercookTime: 9
 --- !u!114 &165991670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2462,7 +2462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Cook: 1
   CookTime: 5
-  OvercookTime: 7
+  OvercookTime: 9
 --- !u!114 &492532003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6834,7 +6834,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Cook: 1
   CookTime: 5
-  OvercookTime: 7
+  OvercookTime: 9
 --- !u!114 &1303372398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15868,7 +15868,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Cook: 1
   CookTime: 5
-  OvercookTime: 7
+  OvercookTime: 9
 --- !u!114 &2052620756
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -22,6 +22,11 @@ public class GameIniter : MonoBehaviour
 
     public bool GameFinished;
 
+    private void Awake()
+    {
+        BoostersManager boostersManager = new BoostersManager(LevelData);
+    }
+
     private async void Start()
     {
         Time.timeScale = 1;
@@ -31,8 +36,6 @@ public class GameIniter : MonoBehaviour
         {
             await component.InitComponent(LevelData);
         });
-
-        BoostersManager boostersManager = new BoostersManager(LevelData);
     }
 
     public void InvokeAction(bool trashed)
