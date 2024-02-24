@@ -1,5 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using Devotion.Scripts.Game.Levels;
+using Devotion.Scripts.GameData;
 using UnityEngine;
 
 namespace Devotion.Scripts.Interface

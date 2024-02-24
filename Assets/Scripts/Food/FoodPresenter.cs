@@ -1,88 +1,91 @@
 using System;
 using UnityEngine;
 
-public sealed class FoodPresenter : MonoBehaviour
+namespace Devotion.Scripts.Food
 {
-    [Serializable]
-    public class FoodVisualizerSet
+    public sealed class FoodPresenter : MonoBehaviour
     {
-        public GameObject EmptyFood = null;
-        public FoodVisualizer RawFood = null;
-        public FoodVisualizer CookedFood = null;
-        public FoodVisualizer OvercookedFood = null;
-
-        public void HideFood()
+        [Serializable]
+        public class FoodVisualizerSet
         {
-            if (EmptyFood != null)
-                EmptyFood.SetActive(false);
+            public GameObject EmptyFood = null;
+            public FoodVisualizer RawFood = null;
+            public FoodVisualizer CookedFood = null;
+            public FoodVisualizer OvercookedFood = null;
 
-            RawFood?.SetEnable(false);
-            CookedFood?.SetEnable(false);
-            OvercookedFood?.SetEnable(false);
-        }
-
-        public void ShowEmptyFood()
-        {
-            HideFood();
-
-            if (EmptyFood != null)
-                EmptyFood.SetActive(true);
-        }
-
-        public void ShowFoodByStatus(Food.FoodStatus status)
-        {
-            HideFood();
-
-            switch (status)
+            public void HideFood()
             {
-                case Food.FoodStatus.Raw:
-                    {
-                        RawFood?.SetEnable(true);
-                        return;
-                    }
-                case Food.FoodStatus.Cooked:
-                    {
-                        CookedFood?.SetEnable(true);
-                        return;
-                    }
-                case Food.FoodStatus.Overcooked:
-                    {
-                        OvercookedFood?.SetEnable(true);
-                        return;
-                    }
+                if (EmptyFood != null)
+                    EmptyFood.SetActive(false);
+
+                RawFood?.SetEnable(false);
+                CookedFood?.SetEnable(false);
+                OvercookedFood?.SetEnable(false);
+            }
+
+            public void ShowEmptyFood()
+            {
+                HideFood();
+
+                if (EmptyFood != null)
+                    EmptyFood.SetActive(true);
+            }
+
+            public void ShowFoodByStatus(Food.FoodStatus status)
+            {
+                HideFood();
+
+                switch (status)
+                {
+                    case Food.FoodStatus.Raw:
+                        {
+                            RawFood?.SetEnable(true);
+                            return;
+                        }
+                    case Food.FoodStatus.Cooked:
+                        {
+                            CookedFood?.SetEnable(true);
+                            return;
+                        }
+                    case Food.FoodStatus.Overcooked:
+                        {
+                            OvercookedFood?.SetEnable(true);
+                            return;
+                        }
+                }
             }
         }
-    }
 
 
-    public string               foodName = string.Empty;
-    public FoodVisualizerSet    visualSet = null;
-    public PlaceForFood         foodPlace = null;
+        public string foodName = string.Empty;
+        public FoodVisualizerSet visualSet = null;
+        public PlaceForFood foodPlace = null;
 
-    private void Start()
-    {
-        visualSet?.HideFood();
-
-        if (foodPlace)
-            foodPlace.FoodPlaceUpdated += OnFoodPlaceUpdated;
-    }
-
-    private void OnDisable()
-    {
-        if (foodPlace)
-            foodPlace.FoodPlaceUpdated -= OnFoodPlaceUpdated;
-    }
-
-    private void OnFoodPlaceUpdated()
-    {
-        if (foodPlace.IsFree)
-            visualSet?.ShowEmptyFood();
-        else
+        private void Start()
         {
-            if (foodPlace.CurrentFood.FoodName == foodName)
-                visualSet?.ShowFoodByStatus(foodPlace.CurrentFood.CurrentStatus);
+            visualSet?.HideFood();
+
+            if (foodPlace)
+                foodPlace.FoodPlaceUpdated += OnFoodPlaceUpdated;
+        }
+
+        private void OnDisable()
+        {
+            if (foodPlace)
+                foodPlace.FoodPlaceUpdated -= OnFoodPlaceUpdated;
+        }
+
+        private void OnFoodPlaceUpdated()
+        {
+            if (foodPlace.IsFree)
+                visualSet?.ShowEmptyFood();
             else
-                visualSet?.HideFood();
+            {
+                if (foodPlace.CurrentFood.FoodName == foodName)
+                    visualSet?.ShowFoodByStatus(foodPlace.CurrentFood.CurrentStatus);
+                else
+                    visualSet?.HideFood();
+            }
         }
     }
 }

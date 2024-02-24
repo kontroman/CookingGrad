@@ -1,12 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
+using Devotion.Scripts.GameData;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class BaseController : MonoBehaviour
+namespace Devotion.Scripts.Controllers
 {
-    public virtual Task InitComponent(LevelData levelData)
+    public class BaseController : MonoBehaviour
     {
-        return Task.CompletedTask;
+        public virtual Task InitComponent(LevelData levelData)
+        {
+            return Task.CompletedTask;
+        }
     }
 }

@@ -1,29 +1,32 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-public sealed class Order
+namespace Devotion.Scripts.Orders
 {
-    public class OrderFood
+    public sealed class Order
     {
-        public string Name { get; } = null;
-        public string Dopings { get; } = null;
-
-        public OrderFood(string name, string dopings)
+        public class OrderFood
         {
-            Name = name;
-            Dopings = dopings;
+            public string Name { get; } = null;
+            public string Dopings { get; } = null;
+
+            public OrderFood(string name, string dopings)
+            {
+                Name = name;
+                Dopings = dopings;
+            }
         }
-    }
 
-    public readonly string name;
+        public readonly string name;
 
-    List<OrderFood> _foods;
+        List<OrderFood> _foods;
 
-    public ReadOnlyCollection<OrderFood> Foods { get { return _foods.AsReadOnly(); } }
+        public ReadOnlyCollection<OrderFood> Foods { get { return _foods.AsReadOnly(); } }
 
-    public Order(string _name, List<OrderFood> foods)
-    {
-        name = _name;
-        _foods = foods;
+        public Order(string _name, List<OrderFood> foods)
+        {
+            name = _name;
+            _foods = foods;
+        }
     }
 }

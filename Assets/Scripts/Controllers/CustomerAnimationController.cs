@@ -1,12 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class CustomerAnimationController : MonoBehaviour
+namespace Devotion.Scripts.Controllers
 {
-    public void DoMoveToPlace(Transform place)
+    public class CustomerAnimationController : MonoBehaviour
     {
-        transform.DOPath(new Vector3[] {transform.position, place.transform.position}, 5f, PathType.Linear);
+        public void DoMoveToPlace(Transform place)
+        {
+            transform.DOPath(new Vector3[] { transform.position, place.transform.position }, 5f, PathType.Linear);
+        }
     }
 }

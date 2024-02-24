@@ -3,32 +3,35 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class CustomerPlace : MonoBehaviour
+namespace Devotion.Scripts.Customers
 {
-	public Customer CurrentCustomer { get; private set; } = null;
-
-	public bool IsFree { get { return CurrentCustomer == null; } }
-
-	public async void PlaceCustomer(Customer customer)
+	public class CustomerPlace : MonoBehaviour
 	{
-		CurrentCustomer = customer;
-		customer.transform.SetParent(transform);
-		customer.AnimationController.DoMoveToPlace(this.transform);
+		public Customer CurrentCustomer { get; private set; } = null;
 
-		await Task.Delay(5000);
+		public bool IsFree { get { return CurrentCustomer == null; } }
 
-		customer.ActivateCustomer();
-		//customer.transform.localPosition = Vector3.zero;
-	}
-
-	public void Free()
-	{
-		if (!CurrentCustomer)
+		public async void PlaceCustomer(Customer customer)
 		{
-			return;
+			CurrentCustomer = customer;
+			customer.transform.SetParent(transform);
+			customer.AnimationController.DoMoveToPlace(this.transform);
+
+			await Task.Delay(5000);
+
+			customer.ActivateCustomer();
+			//customer.transform.localPosition = Vector3.zero;
 		}
-		var customer = CurrentCustomer;
-		CurrentCustomer = null;
-		Destroy(customer.gameObject);
+
+		public void Free()
+		{
+			if (!CurrentCustomer)
+			{
+				return;
+			}
+			var customer = CurrentCustomer;
+			CurrentCustomer = null;
+			Destroy(customer.gameObject);
+		}
 	}
 }

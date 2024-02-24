@@ -2,28 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OrderPresenter : MonoBehaviour
+namespace Devotion.Scripts.Orders
 {
-	public OrderVisualizer Visualizer = null;
-
-	OrderPlace _orderPlace = null;
-
-	private void Start()
+	public class OrderPresenter : MonoBehaviour
 	{
-		_orderPlace = GetComponent<OrderPlace>();
-		_orderPlace.CurrentOrderUpdated += OnOrderUpdated;
-	}
+		public OrderVisualizer Visualizer = null;
 
-	private void OnDestroy()
-	{
-		if (_orderPlace)
+		OrderPlace _orderPlace = null;
+
+		private void Start()
 		{
-			_orderPlace.CurrentOrderUpdated -= OnOrderUpdated;
+			_orderPlace = GetComponent<OrderPlace>();
+			_orderPlace.CurrentOrderUpdated += OnOrderUpdated;
 		}
-	}
 
-	private void OnOrderUpdated()
-	{
-		Visualizer.Init(_orderPlace.CurrentOrder);
+		private void OnDestroy()
+		{
+			if (_orderPlace)
+			{
+				_orderPlace.CurrentOrderUpdated -= OnOrderUpdated;
+			}
+		}
+
+		private void OnOrderUpdated()
+		{
+			Visualizer.Init(_orderPlace.CurrentOrder);
+		}
 	}
 }

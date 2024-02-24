@@ -1,15 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
+using Devotion.Scripts.Controllers;
 using UnityEngine;
 
-public class FeedCake : MonoBehaviour
+namespace Devotion.Scripts.Interface
 {
-    public void ActiveCake()
+    public class FeedCake : MonoBehaviour
     {
-        foreach (var customerPlace in CustomersController.Instance.CustomerPlaces)
+        public void ActiveCake()
         {
-            if (customerPlace.CurrentCustomer != null)            
-                customerPlace.CurrentCustomer.ResetTimer();            
+            foreach (var customerPlace in CustomersController.Instance.CustomerPlaces)
+            {
+                if (customerPlace.CurrentCustomer != null)
+                    customerPlace.CurrentCustomer.ResetTimer();
+            }
         }
     }
 }

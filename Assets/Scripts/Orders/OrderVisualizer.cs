@@ -1,30 +1,33 @@
-using System.Collections;
+using Devotion.Scripts.Food;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OrderVisualizer : MonoBehaviour
+namespace Devotion.Scripts.Orders
 {
-    public List<FoodVisualizer> visual = new List<FoodVisualizer>();
-
-    private void Start()
+    public class OrderVisualizer : MonoBehaviour
     {
-        Clear();
-    }
+        public List<FoodVisualizer> visual = new List<FoodVisualizer>();
 
-    private void Clear()
-    {
-        visual.ForEach(x => x.SetEnable(false));
-    }
-
-    public void Init(List<string> foods)
-    {
-        Clear();
-
-        foreach(var v in visual)
+        private void Start()
         {
-            if (foods.Contains(v.name))
-                v.SetEnable(true);
+            Clear();
         }
-    }
 
+        private void Clear()
+        {
+            visual.ForEach(x => x.SetEnable(false));
+        }
+
+        public void Init(List<string> foods)
+        {
+            Clear();
+
+            foreach (var v in visual)
+            {
+                if (foods.Contains(v.name))
+                    v.SetEnable(true);
+            }
+        }
+
+    }
 }

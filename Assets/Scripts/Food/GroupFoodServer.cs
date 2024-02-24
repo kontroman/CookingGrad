@@ -1,22 +1,24 @@
 using JetBrains.Annotations;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroupFoodServer : MonoBehaviour
+namespace Devotion.Scripts.Food
 {
-	public List<FoodServer> Servers = null;
-
-	[UsedImplicitly]
-	public async void TryServe()
+	public class GroupFoodServer : MonoBehaviour
 	{
-		foreach (var server in Servers)
-		{
-			var result = await server.TryServeFood();
+		public List<FoodServer> Servers = null;
 
-			if (result)
+		[UsedImplicitly]
+		public async void TryServe()
+		{
+			foreach (var server in Servers)
 			{
-				return;
+				var result = await server.TryServeFood();
+
+				if (result)
+				{
+					return;
+				}
 			}
 		}
 	}

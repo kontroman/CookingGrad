@@ -1,21 +1,23 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public sealed class FoodHolder : MonoBehaviour
+namespace Devotion.Scripts.Food
 {
-    [SerializeField]
-    private string FoodName;
-
-    [SerializeField]
-    public List<MonoFoodPlace> PlacesForFood = new List<MonoFoodPlace>();
-
-    public void TryToPlaceFood()
+    public sealed class FoodHolder : MonoBehaviour
     {
-        foreach(MonoFoodPlace place in PlacesForFood)
+        [SerializeField]
+        private string FoodName;
+
+        [SerializeField]
+        public List<MonoFoodPlace> PlacesForFood = new List<MonoFoodPlace>();
+
+        public void TryToPlaceFood()
         {
-            if (place.PlaceFood(new Food(FoodName)))
-                return;
+            foreach (MonoFoodPlace place in PlacesForFood)
+            {
+                if (place.PlaceFood(new Food(FoodName)))
+                    return;
+            }
         }
     }
 }

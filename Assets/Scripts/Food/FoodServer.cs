@@ -1,33 +1,35 @@
-using Devotion.Scripts.Game.Boosters;
-using System.Collections;
+using Devotion.Scripts.Controllers;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class FoodServer : MonoBehaviour
+namespace Devotion.Scripts.Food
 {
-	PlaceForFood _place = null;
-
-	void Start()
+	public class FoodServer : MonoBehaviour
 	{
-		_place = GetComponent<PlaceForFood>();
-	}
+		PlaceForFood _place = null;
 
-	public async Task<bool> TryServeFood()
-	{
-		if (_place.IsFree || (_place.CurrentFood.CurrentStatus != Food.FoodStatus.Cooked))
+		void Start()
 		{
-			return false;
-		}
-		var order = OrdersController.Instance.FindOrder(new List<string>(1) { _place.CurrentFood.FoodName });
-		bool task = await CustomersController.Instance.ServeOrder(order);
-
-		if ((order == null) || !task)
-		{
-			return false;
+			_place = GetComponent<PlaceForFood>();
 		}
 
-		_place.FreePlace();
-		return true;
+		public async Task<bool> TryServeFood()
+		{
+			if (_place.IsFree || (_place.CurrentFood.CurrentStatus != Food.FoodStatus.Cooked))
+			{
+				return false;
+			}
+			var order = OrdersController.Instance.FindOrder(new List<string>(1) { _place.CurrentFood.FoodName });
+			bool task = await CustomersController.Instance.ServeOrder(order);
+
+			if ((order == null) || !task)
+			{
+				return false;
+			}
+
+			_place.FreePlace();
+			return true;
+		}
 	}
 }

@@ -1,7 +1,6 @@
-using Devotion.Scripts.Game.Boosters;
-using System.Collections;
+using Devotion.Scripts.GameData;
 using System.Collections.Generic;
-using UnityEngine;
+
 namespace Devotion.Scripts.Game.Boosters
 {
     public class BoostersManager

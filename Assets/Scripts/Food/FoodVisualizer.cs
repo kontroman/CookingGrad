@@ -1,17 +1,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoodVisualizer : MonoBehaviour
+namespace Devotion.Scripts.Food
 {
-    [SerializeField]
-    private string FoodName;
-
-    [SerializeField]
-    private List<GameObject> FoodParts = new List<GameObject>();
-
-    public void SetEnable(bool value)
+    public class FoodVisualizer : MonoBehaviour
     {
-        gameObject.SetActive(value);
-        FoodParts.ForEach(x => x.SetActive(value));
+        [SerializeField]
+        private string FoodName;
+
+        [SerializeField]
+        private List<GameObject> FoodParts = new List<GameObject>();
+
+        public void SetEnable(bool value)
+        {
+            gameObject.SetActive(value);
+            FoodParts.ForEach(x => x.SetActive(value));
+        }
     }
 }

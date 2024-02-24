@@ -1,28 +1,30 @@
 using Devotion.Scripts.Game.Boosters;
+using Devotion.Scripts.Game.Levels;
 using Sirenix.OdinInspector;
-using Sirenix.OdinInspector.Editor;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "LevelData", menuName = "Datas/Game/LevelData")]
-public class LevelData : ScriptableObject
+namespace Devotion.Scripts.GameData
 {
-    public int LevelIndex;
-    public int CustomersCount;
-    public int TimeBeforeFirstCustomer;
-    public int SpawnTime;
+    [CreateAssetMenu(fileName = "LevelData", menuName = "Datas/Game/LevelData")]
+    public class LevelData : ScriptableObject
+    {
+        public int LevelIndex;
+        public int CustomersCount;
+        public int TimeBeforeFirstCustomer;
+        public int SpawnTime;
 
-    [AssetSelector]
-    public TextAsset AvailableOrders;
+        [AssetSelector]
+        public TextAsset AvailableOrders;
 
-    public bool HasTime;
+        public bool HasTime;
 
-    [ShowIf("HasTime")]
-    public int GameTime;
+        [ShowIf("HasTime")]
+        public int GameTime;
 
-    [TableList, GUIColor(1f, 0.8f, 0.8f)]
-    public List<LevelTask> Tasks;
+        [TableList, GUIColor(1f, 0.8f, 0.8f)]
+        public List<LevelTask> Tasks;
 
-    public List<Booster> Boosters;
+        public List<Booster> Boosters;
+    }
 }

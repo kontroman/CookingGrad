@@ -1,20 +1,20 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DisplayTask : MonoBehaviour
+namespace Devotion.Scripts.Game.Levels
 {
-    [SerializeField] private Image _icon;
-    [SerializeField] private TextMeshProUGUI _title;
-
-    public void Init(LevelTask task)
+    public class DisplayTask : MonoBehaviour
     {
-        string postfix = task.HasCounter ? task.Count.ToString() : " ";
+        [SerializeField] private Image _icon;
+        [SerializeField] private TextMeshProUGUI _title;
 
-        _icon.sprite = task.Icon;
-        _title.text = task.Discription + postfix;
+        public void Init(LevelTask task)
+        {
+            string postfix = task.HasCounter ? task.Count.ToString() : " ";
+
+            _icon.sprite = task.Icon;
+            _title.text = task.Discription + postfix;
+        }
     }
 }

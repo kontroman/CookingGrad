@@ -1,7 +1,10 @@
 using UnityEngine;
 
-public abstract class MonoFoodPlace : MonoBehaviour
+namespace Devotion.Scripts.Food
 {
-	public abstract bool PlaceFood(Food food);
-	public abstract void FreePlace();
+	public abstract class MonoFoodPlace : MonoBehaviour
+	{
+		public abstract bool PlaceFood(Food food);
+		public abstract void FreePlace();
+	}
 }

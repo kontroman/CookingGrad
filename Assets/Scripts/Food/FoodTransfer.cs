@@ -1,56 +1,59 @@
-using System.Collections;
+using Devotion.Scripts.Controllers;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public sealed class FoodTransfer : MonoBehaviour, IPointerClickHandler
+namespace Devotion.Scripts.Food
 {
-    public bool transferOnlyCookedFood = true;
-
-    public List<MonoFoodPlace> places = new List<MonoFoodPlace>();
-
-    PlaceForFood _place = null;
-
-    private float _lastClickTime;
-    private float _clickInterval = 0.5f;
-
-    private void Start()
+    public sealed class FoodTransfer : MonoBehaviour, IPointerClickHandler
     {
-        _place = GetComponent<PlaceForFood>();
-    }
+        public bool transferOnlyCookedFood = true;
 
-    public void TransferFood()
-    {
-        var food = _place.CurrentFood;
+        public List<MonoFoodPlace> places = new List<MonoFoodPlace>();
 
-        if (food == null) return;
+        PlaceForFood _place = null;
 
-        if (transferOnlyCookedFood && (food.CurrentStatus == Food.FoodStatus.Cooked))
+        private float _lastClickTime;
+        private float _clickInterval = 0.5f;
+
+        private void Start()
         {
-            _place.PlaceFood(food);
-
-            foreach (var place in places)
-            {
-                if (!place.PlaceFood(food))
-                    continue;
-
-                _place.FreePlace();
-                return;
-            }
+            _place = GetComponent<PlaceForFood>();
         }
-    }
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if ((_lastClickTime + _clickInterval) > Time.time)
+        public void TransferFood()
         {
-            if (_place.CurrentFood.CurrentStatus == Food.FoodStatus.Overcooked)
+            var food = _place.CurrentFood;
+
+            if (food == null) return;
+
+            if (transferOnlyCookedFood && (food.CurrentStatus == Food.FoodStatus.Cooked))
             {
-                GameIniter.Instance.InvokeAction(true);
-                _place.FreePlace();
+                _place.PlaceFood(food);
+
+                foreach (var place in places)
+                {
+                    if (!place.PlaceFood(food))
+                        continue;
+
+                    _place.FreePlace();
+                    return;
+                }
             }
         }
 
-        _lastClickTime = Time.time;
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            if ((_lastClickTime + _clickInterval) > Time.time)
+            {
+                if (_place.CurrentFood.CurrentStatus == Food.FoodStatus.Overcooked)
+                {
+                    GameIniter.Instance.InvokeAction(true);
+                    _place.FreePlace();
+                }
+            }
+
+            _lastClickTime = Time.time;
+        }
     }
 }
