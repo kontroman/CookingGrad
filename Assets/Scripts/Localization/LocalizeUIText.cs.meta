@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 9a3cf81c4395048e6ba9a9f19368943d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - LocalizeMaster: {fileID: 11400000, guid: 33bfb788efc4c4d78b02401c26a40631, type: 2}
+  - LocalizeScritableObject: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
