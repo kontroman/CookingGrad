@@ -83,6 +83,9 @@ namespace Devotion.Scripts.Customers
 
         public async Task<bool> TryServeOrderAsync(Order order)
         {
+            if (_isActive)
+                return false;
+
             var place = OrderPlaces.Find(x => x.CurrentOrder == order);
 
             if (!place)

@@ -12,15 +12,12 @@ namespace Devotion.Scripts.Customers
 
 		public bool IsFree { get { return CurrentCustomer == null; } }
 
-		public async void PlaceCustomer(Customer customer)
+		public void PlaceCustomer(Customer customer)
 		{
 			CurrentCustomer = customer;
 			customer.transform.SetParent(transform);
-			customer.AnimationController.DoMoveToPlace(this.transform);
+			customer.AnimationController.DoMoveToPlace(this.transform, () => { customer.ActivateCustomer(); });
 
-			await Task.Delay(5000);
-
-			customer.ActivateCustomer();
 			//customer.transform.localPosition = Vector3.zero;
 		}
 
