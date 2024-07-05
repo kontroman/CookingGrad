@@ -100,7 +100,7 @@ namespace Devotion.Scripts.Controllers
                 _orderSets.Push(orders);
                 totalOrders += ordersNum;
             }
-            CustomerPlaces.ForEach(x => x.Free());
+
             _timer = 0f;
 
             TotalCustomersGenerated = 0;
@@ -157,7 +157,8 @@ namespace Devotion.Scripts.Controllers
             {
                 return;
             }
-            place.Free();
+
+            place.Free(CustomerSpawnPlaces[UnityEngine.Random.Range(0, CustomerSpawnPlaces.Count)]);
 
             GameplayController.Instance.CheckGameFinish();
         }

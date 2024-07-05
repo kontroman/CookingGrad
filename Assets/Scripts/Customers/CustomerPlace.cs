@@ -1,3 +1,4 @@
+using Devotion.Scripts.Orders;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -23,15 +24,20 @@ namespace Devotion.Scripts.Customers
 			//customer.transform.localPosition = Vector3.zero;
 		}
 
-		public void Free()
+		public void Free(Transform endpoint = null)
 		{
 			if (!CurrentCustomer)
-			{
 				return;
-			}
+
 			var customer = CurrentCustomer;
-			CurrentCustomer = null;
-			Destroy(customer.gameObject);
+            CurrentCustomer.OrderPlace.SetActive(false);
+            CurrentCustomer = null;
+
+            customer.AnimationController.DoMoveToPlace(endpoint, () => 
+			{
+                Destroy(customer.gameObject);
+            }, DG.Tweening.Ease.InQuad);
+
 		}
 	}
 }

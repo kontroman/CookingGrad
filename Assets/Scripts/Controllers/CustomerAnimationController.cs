@@ -5,9 +5,14 @@ namespace Devotion.Scripts.Controllers
 {
     public class CustomerAnimationController : MonoBehaviour
     {
-        public void DoMoveToPlace(Transform place)
+        public void DoMoveToPlace(Transform place, TweenCallback onComplete = null, Ease ease = Ease.Linear)
         {
-            transform.DOPath(new Vector3[] { transform.position, place.transform.position }, 5f, PathType.Linear);
+            var tween = transform.DOMove(place.transform.position, 4f).SetEase(ease);
+
+            if (onComplete != null)
+            {
+                tween.OnComplete(onComplete);
+            }
         }
     }
 }
