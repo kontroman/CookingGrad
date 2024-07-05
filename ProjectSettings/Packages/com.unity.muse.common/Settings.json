@@ -1,0 +1,26 @@
+{
+    "m_Dictionary": {
+        "m_DictionaryValues": [
+            {
+                "type": "Unity.Muse.Common.PreferenceDataWrapper`1[[System.Collections.Generic.List`1[[Unity.Muse.Common.Account.OrganizationInfo, Unity.Muse.Common, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]",
+                "key": "Unity.Muse.Common.Preferences.organizations",
+                "value": "{\"value\":[{\"rid\":1000},{\"rid\":1001},{\"rid\":1002},{\"rid\":1003},{\"rid\":1004},{\"rid\":1005},{\"rid\":1006}],\"references\":{\"version\":2,\"RefIds\":[{\"rid\":1000,\"type\":{\"class\":\"OrganizationInfo\",\"ns\":\"Unity.Muse.Common.Account\",\"asm\":\"Unity.Muse.Common\"},\"data\":{\"org_id\":\"16767667480438\",\"org_name\":\"Devotion Entertainment\",\"status\":\"trial-expired\"}},{\"rid\":1001,\"type\":{\"class\":\"OrganizationInfo\",\"ns\":\"Unity.Muse.Common.Account\",\"asm\":\"Unity.Muse.Common\"},\"data\":{\"org_id\":\"3637833\",\"org_name\":\"EoSGame\",\"status\":\"not-entitled\"}},{\"rid\":1002,\"type\":{\"class\":\"OrganizationInfo\",\"ns\":\"Unity.Muse.Common.Account\",\"asm\":\"Unity.Muse.Common\"},\"data\":{\"org_id\":\"10171085837499\",\"org_name\":\"gam3develop\",\"status\":\"not-entitled\"}},{\"rid\":1003,\"type\":{\"class\":\"OrganizationInfo\",\"ns\":\"Unity.Muse.Common.Account\",\"asm\":\"Unity.Muse.Common\"},\"data\":{\"org_id\":\"3637826\",\"org_name\":\"Kontromans\",\"status\":\"not-entitled\"}},{\"rid\":1004,\"type\":{\"class\":\"OrganizationInfo\",\"ns\":\"Unity.Muse.Common.Account\",\"asm\":\"Unity.Muse.Common\"},\"data\":{\"org_id\":\"7971579339102\",\"org_name\":\"obozhdi\",\"status\":\"not-entitled\"}},{\"rid\":1005,\"type\":{\"class\":\"OrganizationInfo\",\"ns\":\"Unity.Muse.Common.Account\",\"asm\":\"Unity.Muse.Common\"},\"data\":{\"org_id\":\"10170636310741\",\"org_name\":\"RandomGuy93\",\"status\":\"not-entitled\"}},{\"rid\":1006,\"type\":{\"class\":\"OrganizationInfo\",\"ns\":\"Unity.Muse.Common.Account\",\"asm\":\"Unity.Muse.Common\"},\"data\":{\"org_id\":\"7971492664625\",\"org_name\":\"whoover\",\"status\":\"not-entitled\"}}]}}"
+            },
+            {
+                "type": "Unity.Muse.Common.PreferenceDataWrapper`1[[Unity.Muse.Common.Account.OrganizationInfo, Unity.Muse.Common, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+                "key": "Unity.Muse.Common.Preferences.organization",
+                "value": "{\"value\":{\"rid\":1000},\"references\":{\"version\":2,\"RefIds\":[{\"rid\":1000,\"type\":{\"class\":\"OrganizationInfo\",\"ns\":\"Unity.Muse.Common.Account\",\"asm\":\"Unity.Muse.Common\"},\"data\":{\"org_id\":\"16767667480438\",\"org_name\":\"Devotion Entertainment\",\"status\":\"trial-expired\"}}]}}"
+            },
+            {
+                "type": "Unity.Muse.Common.PreferenceDataWrapper`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]",
+                "key": "Unity.Muse.Common.Preferences.trialDialogShown",
+                "value": "{\"value\":false}"
+            },
+            {
+                "type": "Unity.Muse.Common.PreferenceDataWrapper`1[[Unity.Muse.Common.Account.UsageInfo, Unity.Muse.Common, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+                "key": "Unity.Muse.Common.Preferences.usage",
+                "value": "{\"value\":{\"rid\":1000},\"references\":{\"version\":2,\"RefIds\":[{\"rid\":1000,\"type\":{\"class\":\"UsageInfo\",\"ns\":\"Unity.Muse.Common.Account\",\"asm\":\"Unity.Muse.Common\"},\"data\":{\"used\":812,\"total\":1000}}]}}"
+            }
+        ]
+    }
+}

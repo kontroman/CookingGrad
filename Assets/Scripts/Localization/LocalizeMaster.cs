@@ -23,10 +23,6 @@ namespace Devotion.Scripts.Localization
             }
         }
 
-        public void UpdateSelectedLanguage()
-        {
-
-        }
         public void SetSelectedLang(SystemLanguage nextLang)
         {
             selectedLang = nextLang;
@@ -36,6 +32,11 @@ namespace Devotion.Scripts.Localization
                 selectedLang = nextLang
             };
             SaveData(saveData);
+        }
+
+        public void UpdateSelectedLanguage()
+        {
+
         }
 
         public SystemLanguage GetSelectedLang()

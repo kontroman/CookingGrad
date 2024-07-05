@@ -1,6 +1,7 @@
 using Devotion.Scripts.Game.Levels;
 using Devotion.Scripts.GameData;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Devotion.Scripts.Interface
 {
@@ -19,6 +20,11 @@ namespace Devotion.Scripts.Interface
 
                 task.GetComponent<DisplayTaskEnd>().Init(item);
             }
+        }
+
+        public void Continue()
+        {
+            SceneManager.LoadScene(0);
         }
     }
 }

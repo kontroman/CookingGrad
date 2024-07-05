@@ -16,17 +16,17 @@ namespace Devotion.Scripts.Orders
 			_orderPlace.CurrentOrderUpdated += OnOrderUpdated;
 		}
 
-		private void OnDestroy()
+        private void OnOrderUpdated()
+        {
+            Visualizer.Init(_orderPlace.CurrentOrder);
+        }
+
+        private void OnDestroy()
 		{
 			if (_orderPlace)
 			{
 				_orderPlace.CurrentOrderUpdated -= OnOrderUpdated;
 			}
-		}
-
-		private void OnOrderUpdated()
-		{
-			Visualizer.Init(_orderPlace.CurrentOrder);
 		}
 	}
 }

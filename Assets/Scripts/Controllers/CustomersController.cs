@@ -107,9 +107,6 @@ namespace Devotion.Scripts.Controllers
             TotalCustomersGeneratedChanged?.Invoke();
 
             return Task.CompletedTask;
-
-            //GameplayController.Instance.OrdersTarget = totalOrders - 2;
-            //GameplayController.Instance.StartGame();
         }
 
         private Order GenerateRandomOrder()
@@ -162,7 +159,7 @@ namespace Devotion.Scripts.Controllers
             }
             place.Free();
 
-            //GameplayController.Instance.CheckGameFinish();
+            GameplayController.Instance.CheckGameFinish();
         }
 
         private List<Customer> FindAndSortOredersByTime()

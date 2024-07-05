@@ -56,7 +56,6 @@ namespace Devotion.Scripts.Audio
                 _musicAC = _musicObject.GetComponent<AudioSource>();
                 _soundAC = _musicObject.transform.GetChild(0).GetComponent<AudioSource>();
             }
-
         }
 
         public async void PlayMusic(string musicName)

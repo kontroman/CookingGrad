@@ -20,13 +20,14 @@ namespace Devotion.Scripts.Game.Boosters
 
         private void Init(LevelData levelData)
         {
-            if(levelData.Boosters.Count > 0)
-
-            foreach(Booster booster in levelData.Boosters)
+            if (levelData.Boosters.Count > 0)
             {
-                _boosters.Add(booster);
+                foreach (Booster booster in levelData.Boosters)
+                {
+                    _boosters.Add(booster);
 
-                booster.ActivateBooster(booster.Type);
+                    booster.ActivateBooster(booster.Type);
+                }
             }
         }
 

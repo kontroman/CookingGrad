@@ -1,5 +1,6 @@
 using Devotion.Scripts.Game.Boosters;
 using Devotion.Scripts.GameData;
+using Devotion.Scripts.Interface;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -25,6 +26,11 @@ namespace Devotion.Scripts.Controllers
 
         private void Awake()
         {
+            int currentLevelIndex = PlayerPrefs.GetInt("CurrentLevel");
+
+            Debug.LogError(currentLevelIndex);
+
+            LevelData = Resources.Load<LevelData>("Levels/Level" + currentLevelIndex.ToString());
             BoostersManager boostersManager = new BoostersManager(LevelData);
         }
 
@@ -60,6 +66,7 @@ namespace Devotion.Scripts.Controllers
         {
             GameFinished = true;
 
+            ShowEndGameWindow();
 
             await DoSlowTime();
         }
@@ -80,6 +87,7 @@ namespace Devotion.Scripts.Controllers
 
         public void ShowEndGameWindow()
         {
+            EndGameWindow.GetComponent<EndWindow>().CurrentTask = LevelData;
             EndGameWindow.SetActive(true);
         }
     }

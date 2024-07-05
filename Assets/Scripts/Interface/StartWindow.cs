@@ -1,5 +1,7 @@
+using Devotion.Scripts.Controllers;
 using Devotion.Scripts.Game.Levels;
 using Devotion.Scripts.GameData;
+using System.Collections;
 using UnityEngine;
 
 namespace Devotion.Scripts.Interface
@@ -11,8 +13,14 @@ namespace Devotion.Scripts.Interface
 
         public LevelData CurrentTask;
 
-        private void Awake()
+        private IEnumerator Start()
         {
+            yield return new WaitForSeconds(1);
+
+            gameObject.transform.localScale = Vector3.one;
+
+            CurrentTask = GameplayController.Instance.LevelData;
+
             foreach (var item in CurrentTask.Tasks)
             {
                 var task = Instantiate(_taskPrefab, _parentPanel.transform);
@@ -20,7 +28,12 @@ namespace Devotion.Scripts.Interface
                 task.GetComponent<DisplayTask>().Init(item);
             }
 
-            Destroy(gameObject, 2f);
+            DestroyWindow(2);
+        }
+
+        public void DestroyWindow(float delay)
+        {
+            Destroy(gameObject, delay);
         }
     }
 }
