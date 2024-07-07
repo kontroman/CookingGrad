@@ -28,8 +28,6 @@ namespace Devotion.Scripts.Controllers
         {
             int currentLevelIndex = PlayerPrefs.GetInt("CurrentLevel");
 
-            Debug.LogError(currentLevelIndex);
-
             LevelData = Resources.Load<LevelData>("Levels/Level" + currentLevelIndex.ToString());
             BoostersManager boostersManager = new BoostersManager(LevelData);
         }

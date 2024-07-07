@@ -5,7 +5,7 @@
   <order name="Waffle">
     <food>Waffle</food>
   </order>
-  <order name="ChokolateWaffle">
+  <!--<order name="ChokolateWaffle">
     <food>Waffle</food>
     <food dopings="Waffle">Chocolate</food>
   </order>
@@ -37,5 +37,5 @@
     <food dopings="Waffle">Chocolate</food>
     <food dopings="Waffle">Berries</food>
     <food dopings="Waffle">Sticks</food>
-  </order>
+  </order>-->
 </root>
