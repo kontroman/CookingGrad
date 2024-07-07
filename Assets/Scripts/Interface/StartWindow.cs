@@ -13,10 +13,8 @@ namespace Devotion.Scripts.Interface
 
         public LevelData CurrentTask;
 
-        private IEnumerator Start()
+        private void Start()
         {
-            yield return new WaitForSeconds(1);
-
             gameObject.transform.localScale = Vector3.one;
 
             CurrentTask = GameplayController.Instance.LevelData;

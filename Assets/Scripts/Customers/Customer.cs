@@ -83,9 +83,6 @@ namespace Devotion.Scripts.Customers
 
         public async Task<bool> TryServeOrderAsync(Order order)
         {
-            Debug.LogError(_isActive);
-            Debug.LogError(OrderPlace.activeSelf);
-
             if (!_isActive || !OrderPlace.activeSelf)
                 return false;
 
